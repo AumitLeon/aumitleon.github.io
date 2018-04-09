@@ -10,6 +10,14 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/social.css" media="screen">
+
+    <!--Redirect to https-->
+    <script>
+        var loc = window.location.href+'';
+        if (loc.indexOf('http://')==0){
+              window.location.href = loc.replace('http://','https://');
+            }
+    </script>
   </head>
   <body>
     <section class="page-header">

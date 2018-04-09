@@ -11,6 +11,14 @@
       gtag('config', 'UA-112119197-1');
     </script>
 
+    <!--Redirect to https-->
+    <script>
+      var loc = window.location.href+'';
+      if (loc.indexOf('http://')==0){
+            window.location.href = loc.replace('http://','https://');
+          }
+    </script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
