@@ -1,0 +1,51 @@
+.image-cropper {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+/* unvisited link */
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: none;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/** Fonts **/
+@import url(//fonts.googleapis.com/css?family=Roboto:300,400|Source+Sans+Pro:300);      
+body{
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+p.gfont{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h5.cust {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bolder;
+}
+
+a, h5 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+}
