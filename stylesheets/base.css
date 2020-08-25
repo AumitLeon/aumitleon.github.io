@@ -3,7 +3,26 @@
   height: 150px;
   position: relative;
   overflow: hidden;
-  border-radius: 10%;
+  border-radius: 50%;
+}
+/* 
+.container-helper > div {
+  display: inline-block;
+  *display: inline; For IE7 */
+  /* zoom: 1; Trigger hasLayout */
+  /* width: 33%;
+  text-align: center;
+} */
+
+
+.container {
+  display: flex;
+}
+.container.space-around {
+  justify-content: space-around;
+}
+.container.space-between {  
+  justify-content: space-between;
 }
 
 /* unvisited link */
