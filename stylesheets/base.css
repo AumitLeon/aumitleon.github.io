@@ -15,13 +15,13 @@
 } */
 
 
-.container {
+.container-nav {
   display: flex;
 }
-.container.space-around {
+.container-nav.space-around {
   justify-content: space-around;
 }
-.container.space-between {  
+.container-nav.space-between {  
   justify-content: space-between;
 }
 
