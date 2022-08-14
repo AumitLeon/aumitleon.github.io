@@ -13,6 +13,7 @@ theme-color: indigo # indigo|yellow|pink|green|stone|
 author: Aumit Leon
 author-bio: Software Engineer @ Spotify  # change to false to hide
 author-image: headshot.jpg  # file must be in the /assets/img/ folder
+author-image-optimized: headshot.webp # file must be in the /assets/img/ folder
 
 # navigation menu
 show-nav-menu: true
