@@ -7,8 +7,11 @@ layout: default
 
 <div class="mx-auto text-center prose prose-{{site.theme-color}}">
   <div>
-    <img class="object-cover mx-auto h-36 w-36 rounded-full" src="{{site.baseurl}}/assets/img/{{site.author-image}}"
-      alt="author profile image">
+    <picture>
+      <source type="image/webp" srcset="{{site.baseurl}}/assets/img/{{site.author-image-optimized}}">
+      <source type="image/jpeg" srcset="{{site.baseurl}}/assets/img/{{site.author-image}}">
+      <img class="object-cover mx-auto h-36 w-36 rounded-full" src="{{site.baseurl}}/assets/img/{{site.author-image}}" alt="author profile image">
+    </picture>
     <h1>{{site.author}}</h1>
   </div>
   {% if site.author-bio %}
