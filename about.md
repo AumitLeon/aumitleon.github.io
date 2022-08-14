@@ -22,7 +22,7 @@ Hi there 👋
 
 🏗️ At Indigo, I helped build out a number of the key Bidding APIs as part of the Market+ offering. My work helped laid the technical foundation for Bidding functionality. 
 
-🤝 I was also a member of Indigo's Digital DEI (Diversity, Equity, Inclusion) task force. I managed community partnerships helped form relationships between Indigo and our immediate community through career fairs, panels, and other events aimed at public high school students interested in technology. 
+🤝 I was also a member of Indigo's Digital DEI (Diversity, Equity, Inclusion) task force. I managed community partnerships and helped form relationships between Indigo and our immediate community through career fairs, panels, and other events aimed at public high school students interested in technology. 
 
 ## And in the past, I...
 
