@@ -20,8 +20,8 @@ show-nav-menu: true
 nav-menu:
 - text: About
   permalink: about
-- text: Resume
-  permalink: resume
+- text: Projects
+  permalink: projects
 - text: Blog
   permalink: blog
 
