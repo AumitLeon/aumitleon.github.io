@@ -18,7 +18,7 @@ Hi there 👋
 
 ## Previously, I...
 
-🌾 Worked on the Grain Marketplace as a Software Engineer on the Grain Marketplace team @ Indigo Ag, helping to digitize a complex financial market that has long had many analog components.
+🌾 Worked as a Software Engineer on the Grain Marketplace team @ Indigo Ag, helping to digitize a complex financial market that has long had many analog components.
 
 🏗️ At Indigo, I helped build out a number of the key Bidding APIs as part of the Market+ offering. My work helped laid the technical foundation for Bidding functionality. 
 
