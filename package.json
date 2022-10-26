@@ -12,6 +12,9 @@
     "postcss-cli": "^9.1.0",
     "tailwindcss": "^3.0.12"
   },
+  "scripts":{
+    "build:run": "bundle exec jekyll serve"
+  },
   "dependencies": {
     "@fontsource/inter": "^4.5.1"
   }
