@@ -10,7 +10,7 @@ Hi there 👋
 
 ## Currently, I'm...
 
-🔭 Working on building APIs and data infrastructure as part of the Podsights team at @ Spotify, providing industry leading podcast ad attribution.
+🎶 Working on building ads reporting and measurement products, APIs, and data infrastructure as part of the Ads Data Platform team @ Spotify. 
 
 🌱 Hacking on end to end Machine Learning, NLP, ML pipelines and workflow orchestration.
 
