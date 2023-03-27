@@ -5,7 +5,7 @@ date: 2023/03/25
 description: Leveraging LLMs and the naturalness of software to build software declaratively.
 tags: machine-learning large-language-models nlp transformers software-engineering
 author: Aumit Leon
-permalink: llms-and-declaritive-software-development
+permalink: llms-and-declarative-software-development
 ---
 
 Large language models (LLMs) and tools derived from them have taken the world by [storm](https://www.nytimes.com/2022/12/05/technology/chatgpt-ai-twitter.html). Southpark even dedicated an episode this season to ChatGPT, dubbed "[*Deep Learning*](https://southpark.cc.com/episodes/8byci4/south-park-deep-learning-season-26-ep-4)". I have [previously written](https://aumitleon.dev/prompt-engineering-and-the-future-of-work) about the implications of LLMs and the wonders of prompt engineering, and just a few short weeks ago, OpenAI released the latest iteration of their GPT family of models: [GPT-4](https://openai.com/research/gpt-4). If you haven't, I'd highly recommend watching the [24 minute developer demo livestream](https://www.youtube.com/watch?v=outcGtbnMuQ). 
