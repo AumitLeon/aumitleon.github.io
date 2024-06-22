@@ -6,11 +6,11 @@ permalink: about
 
 Hi there 👋
 
-> I'm Aumit Leon, a Software Engineer building performant, scalable, and secure APIs and data pipelines ⚡
+> I'm Aumit Leon, a Software Engineer building performant, scalable, and secure distributed systems ⚡
 
 ## Currently, I'm...
 
-🎶 Working on building ads reporting and measurement products, APIs, and data infrastructure as part of the Ads Data Platform team @ Spotify. 
+🎶 A technical lead within the Ads Data Platform Measurement team @ Spotify. I lead the development and enhancement of the [Spotify Pixel](https://ads.spotify.com/en-US/ad-analytics/spotify-pixel/), and I am also a lead engineer supporting [Spotify Ad Analytics](https://ads.spotify.com/en-US/ad-analytics/), Spotify's free Ad measurement tool.
 
 🌱 Hacking on end to end Machine Learning, NLP, ML pipelines and workflow orchestration.
 
