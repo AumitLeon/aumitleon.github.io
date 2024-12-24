@@ -21,8 +21,8 @@ show-nav-menu: true
 nav-menu:
 - text: About
   permalink: about
-- text: Projects
-  permalink: projects
+# - text: Projects
+#   permalink: projects
 - text: Blog
   permalink: blog
 
