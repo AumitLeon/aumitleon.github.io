@@ -29,3 +29,12 @@ Hi there 👋
 🎓 Attended Middlebury College, where I studied Computer Science and Math.
 
 💻 Served as president of Middle Endian, one of Middlebury's largest student computer science clubs.
+
+
+
+
+
+
+
+
+
