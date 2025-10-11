@@ -12,6 +12,8 @@ Built with tailpages: https://github.com/harrywang/tailpages
 gem install --user-install bundler jekyll
 ```
 
+test
+
 ## Build
 ```
 bundle exec jekyll serve
