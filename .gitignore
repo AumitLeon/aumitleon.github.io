@@ -3,5 +3,7 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 
+.direnv/
+
 node_modules/
 .DS_Store
