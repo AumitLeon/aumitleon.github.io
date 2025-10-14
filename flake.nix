@@ -52,8 +52,11 @@
         packages = {
           # Install all dependencies
           install = pkgs.writeShellScriptBin "install" ''
+            export GEM_HOME="$(pwd)/.gems"
+            export PATH="$GEM_HOME/bin:$PATH"
+
             echo "📦 Installing Ruby dependencies..."
-            ${rubyEnv}/bin/bundle install
+            ${pkgs.bundler}/bin/bundle install --path .gems
 
             echo "📦 Installing Node dependencies..."
             ${yarn}/bin/yarn install
@@ -63,14 +66,20 @@
 
           # Start development server
           serve = pkgs.writeShellScriptBin "serve" ''
+            export GEM_HOME="$(pwd)/.gems"
+            export PATH="$GEM_HOME/bin:$PATH"
+
             echo "🌐 Starting Jekyll development server..."
-            ${rubyEnv}/bin/bundle exec jekyll serve
+            ${pkgs.bundler}/bin/bundle exec jekyll serve
           '';
 
           # Build the site
           build = pkgs.writeShellScriptBin "build" ''
+            export GEM_HOME="$(pwd)/.gems"
+            export PATH="$GEM_HOME/bin:$PATH"
+
             echo "🔨 Building Jekyll site..."
-            ${rubyEnv}/bin/bundle exec jekyll build
+            ${pkgs.bundler}/bin/bundle exec jekyll build
             echo "✅ Build complete! Output in _site/"
           '';
         };
