@@ -21,6 +21,13 @@ nix run .#serve      # Start development server
 nix run .#build      # Build the site
 ```
 
+You can also invoke these via make commands:
+```bash 
+make install # Install depedencies 
+make serve # Start the development server
+make build # Build the site 
+```
+
 ## Manual Setup
 
 ### Install depedencies

@@ -70,7 +70,7 @@
             export PATH="$GEM_HOME/bin:$PATH"
 
             echo "🌐 Starting Jekyll development server..."
-            ${pkgs.bundler}/bin/bundle exec jekyll serve
+            ${pkgs.bundler}/bin/bundle exec jekyll serve --host 0.0.0.0
           '';
 
           # Build the site
