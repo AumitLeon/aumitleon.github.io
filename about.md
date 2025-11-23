@@ -10,9 +10,9 @@ Hi there 👋
 
 ## Currently, I'm
 
-🎶 Technical lead for Ads Measurement @ Spotify. I lead the development and enhancement of the [Spotify Pixel](https://ads.spotify.com/en-US/ad-analytics/spotify-pixel/), and I am also a lead engineer supporting [Spotify Ad Analytics](https://ads.spotify.com/en-US/ad-analytics/), Spotify's free Ad measurement tool. Within measurement, I oversee our experimentation and attribution platforms.
+🎶 Technical lead for Ads Measurement @ Spotify. I lead the development and enhancement of Spotify's first party Attribution platform, which includes the [Spotify Pixel](https://ads.spotify.com/en-US/ad-analytics/spotify-pixel/). I am also a lead engineer supporting [Spotify Ad Analytics](https://ads.spotify.com/en-US/ad-analytics/), Spotify's free Ad measurement tool. Within measurement, I oversee our experimentation and attribution platforms.
 
-🌱 Hacking on end to end Machine Learning, NLP, ML pipelines and workflow orchestration.
+🌱 Hacking on end to end machine learning, agentic workflows declaritive and reproducible builds and development environments, and much more.
 
 💬 Thinking about sustainable software, organizations, and practices.
 
