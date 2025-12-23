@@ -4,7 +4,7 @@ title: whoami
 permalink: about
 ---
 
-Hi there 👋
+Hello earthlings!
 
 > I'm Aumit Leon, a Senior Software Engineer building performant, scalable, and secure distributed systems ⚡
 
@@ -29,3 +29,6 @@ Hi there 👋
 🎓 Attended Middlebury College, where I studied Computer Science and Math.
 
 💻 Served as president of Middle Endian, one of Middlebury's largest student computer science clubs.
+
+
+test from a 
