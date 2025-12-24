@@ -11,7 +11,9 @@ permalink: exploring-jj
 [Jujutsu](https://github.com/jj-vcs/jj) (`jj`) is a new version control system (VCS) that claims to be simpler than git. For most people working with software, some level of comfort or familiarity with git is required to actually be productive. Building software is complex, and working with a distributed version control system is absolutely necessary if you’re working on a project with more than one person. What makes `jj` interesting is that it is a fresh take on a the VCS toolchain that many of us simply *tolerate*. What if things could be better? 
 
 # Transitioning to JJ
-I consider myself to be competent with git and have developed workflows that work for me over time. I generally follow the standard git flow, where I make all my WIP changes with silly commits like `WIP` or `test 1`, but then when I’m satisfied with my changes, I do a `git reset`, and then craft individual commits with meaningful commit messages for chunks of changes in various files. This works fine. 
+I consider myself to be competent with git and have developed workflows that work for me over time. I generally follow the standard git flow, where I make all my WIP changes with silly commits like `WIP` or `test 1`, but then when I’m satisfied with my changes, I do a `git reset`, and then craft individual commits with meaningful commit messages for chunks of changes in various files. This works fine.
+
+
 
 I started to explore `jj`, and was immediately interested in the fact that there is no staging area. Everything is a commit, and you can `describe` a commit (give it a message) before you make any changes (almost like saying, “this is what I intend to do”). I thought this was a pretty cool shift in approach -- stating intention *before* making changes makes more sense than having to craft intention after the fact, for the sake of a clean history.
 
