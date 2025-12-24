@@ -20,6 +20,8 @@ testing jj
 
 💬 Thinking about sustainable software, organizations, and practices.
 
+test
+
 ## Previously, I
 
 🌾 Worked as a Software Engineer on the Grain Marketplace team @ Indigo Ag, helping to digitize a complex financial market that has long had many analog components.
