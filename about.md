@@ -4,7 +4,7 @@ title: whoami
 permalink: about
 ---
 
-Hello earthlings!
+Hello earthlings! I come in chaos. 
 
 > I'm Aumit Leon, a Senior Software Engineer building performant, scalable, and secure distributed systems ⚡
 
