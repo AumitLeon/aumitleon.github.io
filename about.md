@@ -36,6 +36,8 @@ test
 
 💻 Served as president of Middle Endian, one of Middlebury's largest student computer science clubs.
 
+change from b
+
 
 test from a 
 
