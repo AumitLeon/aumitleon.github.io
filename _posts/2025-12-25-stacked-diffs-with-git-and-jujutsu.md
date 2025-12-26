@@ -3,7 +3,7 @@ title: Stacked Diffs with Git and Jujutsu
 layout: post
 date: 2025/12/25
 description: A talk I gave my team reguarding stacked diffs with Git and Jujutsu (jj)
-tags: jj jujutsu software-engineering vcs git, stacked-diffs
+tags: jj jujutsu software-engineering vcs git stacked-diffs
 author: Aumit Leon
 permalink: stacked-diffs-with-git-and-jj
 ---
