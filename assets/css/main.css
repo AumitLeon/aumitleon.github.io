@@ -1,3 +1,87 @@
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
+
+/* --- Tufte-style sidenotes -------------------------------------------------
+   Footnotes written as [^1] keep kramdown's normal bottom-of-page endnote list;
+   _plugins/typography.rb also plants an inline <span class="sidenote"> copy of
+   each note beside its reference. Exactly one copy shows per screen width:
+
+     * narrow / mobile (default) -> the endnote list sits at the bottom of the
+       page, i.e. footnotes behave the ordinary way; the inline copy is hidden.
+     * wide (>= 72rem)           -> the inline copy floats into the right-hand
+       whitespace as a margin note; the endnote list is hidden.
+
+   The hidden copy is display:none (out of the a11y tree too), so a screen
+   reader always meets exactly the visible one. If the plugin ever bails, the
+   endnote list is left untagged and simply shows at every width. */
+
+:root {
+  --sn-gap: 2rem;          /* space between the text column and the note */
+  --sn-width: 13rem;       /* width of a margin note */
+  --sn-accent: #4f46e5;    /* indigo-600, matches site theme-color */
+  --sn-muted: #6b7280;     /* gray-500 */
+  --sn-rule: #e5e7eb;      /* gray-200 */
+}
+
+/* Default (narrow / mobile): ordinary footnotes. The inline margin copy is
+   hidden; kramdown's endnote list shows at the bottom of the page as usual. */
+.sidenote {
+  display: none;
+}
+
+/* The in-text superscript reference number (kramdown's own marker). */
+.prose sup a.footnote {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--sn-accent);
+}
+
+.footnotes {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--sn-rule);
+  font-size: 0.9rem;
+  color: var(--sn-muted);
+}
+
+/* Wide screens: hide the bottom endnote list and float each note's inline copy
+   into the whitespace to the right of the 65ch text column instead. */
+@media (min-width: 72rem) {
+  .footnotes.has-sidenotes {
+    display: none;
+  }
+
+  .sidenote {
+    display: block;
+    float: right;
+    clear: right;
+    width: var(--sn-width);
+    margin-right: calc(-1 * (var(--sn-width) + var(--sn-gap)));
+    margin-top: 0.3rem;
+    margin-bottom: 0.9rem;
+    padding-top: 0.35rem;
+    border-top: 1px solid var(--sn-rule);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--sn-muted);
+    text-align: left;
+    overflow-wrap: anywhere; /* long citation URLs break instead of overflowing */
+  }
+
+  .sidenote .sn-num {
+    font-weight: 600;
+    color: var(--sn-accent);
+    margin-right: 0.35em;
+  }
+
+  /* Note bodies arrive as spans, not paragraphs; a multi-paragraph note stacks. */
+  .sidenote .sn-p + .sn-p {
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .sidenote a {
+    color: var(--sn-accent);
+  }
+}
