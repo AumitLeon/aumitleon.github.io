@@ -19,38 +19,30 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build the site with a full (non-safe) Jekyll so _plugins/ run.
+  # Build the site with Nix. The flake pins Ruby/Jekyll (via gemset.nix) and
+  # Tailwind (the standalone tailwindcss CLI), so this is the exact same build
+  # that `nix build .#site` runs locally -- no separate Ruby/Node setup.
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Ruby toolchain + gems (jekyll, jekyll-postcss-v2, jekyll-seo-tag).
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.3"
-          bundler-cache: true
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
 
-      # Node toolchain + packages (tailwindcss, postcss, autoprefixer). These
-      # power jekyll-postcss-v2, which compiles assets/css/main.css at build.
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "yarn"
-      - name: Install Node dependencies
-        run: yarn install --frozen-lockfile
+      # A clean checkout means self.rev resolves to this commit, so the footer's
+      # "Improve this page" link and Nix store path point at the exact deployed
+      # revision. Most of the toolchain comes from cache.nixos.org; only the
+      # gems and the site itself build here.
+      - name: Build site
+        run: nix build .#site --print-build-logs
 
-      - name: Configure Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
-      - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
+      - name: Prepare artifact
+        run: |
+          mkdir -p _site
+          cp -rL result/. _site/
+          chmod -R u+w _site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

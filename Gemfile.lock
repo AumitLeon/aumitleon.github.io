@@ -44,7 +44,6 @@ GEM
       webrick (~> 1.7)
     jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-postcss-v2 (1.0.2)
     jekyll-redirect-from (0.16.0)
       jekyll (>= 3.3, < 5.0)
     jekyll-sass-converter (3.0.0)
@@ -95,7 +94,6 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 4.3.3)
-  jekyll-postcss-v2
   jekyll-redirect-from
   jekyll-seo-tag
   minima (~> 2.5)

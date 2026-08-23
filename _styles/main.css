@@ -87,12 +87,23 @@
 }
 
 /* --- Footer "Improve this page" commit hash --------------------------------
-   The committed assets/css/tailwind.css is a static, hand-generated artifact
-   and the build never re-runs Tailwind, so the `font-mono` utility isn't
-   available. Author the rule directly instead, reusing Tailwind's default
-   monospace stack -- the same one prose code/pre blocks render with -- so the
-   short sha matches code snippets and downloads no extra font. */
+   The short sha renders in a monospace stack matching prose code/pre blocks.
+   Authored directly here (rather than leaning on Tailwind's `font-mono`
+   utility) so the rule holds regardless of whether that utility happens to be
+   generated, and downloads no extra font. */
 .commit-hash {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
+}
+
+/* --- Footer Nix store path -------------------------------------------------
+   The /nix/store/... path the site was built into (see _plugins/nix_store.rb),
+   shown as a small "built by Nix" badge. Same monospace stack as .commit-hash;
+   break-all so the long path wraps on narrow screens instead of overflowing.
+   The hover text comes from the element's native `title` attribute -- no
+   cursor override, so it stays the default pointer like fzakaria.com. */
+.store-path {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  word-break: break-all;
 }
