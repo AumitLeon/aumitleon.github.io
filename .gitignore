@@ -8,5 +8,9 @@ _site/
 node_modules/
 .DS_Store
 
+# Compiled Tailwind output; generated from _styles/main.css by the tailwindcss
+# CLI (dev: `make serve` / `nix run .#serve`; build: nix/site derivation).
+assets/css/style.css
+
 .bundle/
 .gems/
