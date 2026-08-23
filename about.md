@@ -10,9 +10,9 @@ Hi there 👋
 
 ## Currently, I'm
 
-🎶 Technical lead for Ads Measurement @ Spotify. I lead the development and enhancement of Spotify's first party Attribution platform, which includes the [Spotify Pixel](https://ads.spotify.com/en-US/ad-analytics/spotify-pixel/). I am also a lead engineer supporting [Spotify Ad Analytics](https://ads.spotify.com/en-US/ad-analytics/), Spotify's free Ad measurement tool. Within measurement, I oversee our experimentation and attribution platforms.
+🎶 Technical lead for Ads Measurement, Identity, Signals, and Experimentation @ Spotify. I lead the development of Spotify's attribution platform, which spans the [Spotify Pixel](https://ads.spotify.com/en-US/ad-analytics/spotify-pixel/), [Conversions API](https://adshelp.spotify.com/s/article/Spotify-Conversions-API-US?language=en_US), as well as our internal identity graph and first party attribution engine. I am also a lead engineer supporting [Spotify Ad Analytics](https://ads.spotify.com/en-US/ad-analytics/), Spotify's free Ad measurement tool. On the experimentation side, I oversee our Spotify Ads' [Brand Lift](https://ads.spotify.com/en-AU/brand-lift/), [Split Testing](https://adshelp.spotify.com/s/article/Split-Testing-in-Spotify-Ads-Manager-US?language=en_US), and [Conversion Lift](https://help.adanalytics.spotify.com/about-conversion-lift) products. 
 
-🌱 Hacking on end to end machine learning, agentic workflows, reproducible builds/development environments, and much more.
+🌱 Hacking on agentic workflows, reproducible builds/development environments, and much more.
 
 💬 Thinking about sustainable software, organizations, and practices.
 
@@ -28,4 +28,4 @@ Hi there 👋
 
 🎓 Attended Middlebury College, where I studied Computer Science and Math.
 
-💻 Served as president of Middle Endian, one of Middlebury's largest student computer science clubs.
+💻 Served as president of Middle Endian, a computer science club.
