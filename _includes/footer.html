@@ -23,5 +23,15 @@
       {% endif %}
     </div>
   </div>
+
+  <!-- improve this page -->
+  {% if site.commit_hash and page.path %}
+  <div class="flex flex-wrap items-center justify-center mt-2">
+    <div class="text-sm text-gray-300">
+      Improve this page @
+      <a href="https://github.com/AumitLeon/aumitleon.github.io/tree/{{ site.commit_hash }}/{{ page.path }}" class="commit-hash">{{ site.commit_hash | slice: 0, 7 }}</a>
+    </div>
+  </div>
+  {% endif %}
   </div>
 </footer>

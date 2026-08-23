@@ -85,3 +85,14 @@
     color: var(--sn-accent);
   }
 }
+
+/* --- Footer "Improve this page" commit hash --------------------------------
+   The committed assets/css/tailwind.css is a static, hand-generated artifact
+   and the build never re-runs Tailwind, so the `font-mono` utility isn't
+   available. Author the rule directly instead, reusing Tailwind's default
+   monospace stack -- the same one prose code/pre blocks render with -- so the
+   short sha matches code snippets and downloads no extra font. */
+.commit-hash {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
