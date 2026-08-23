@@ -23,8 +23,8 @@ nav-menu:
     permalink: about
   # - text: Projects
   #   permalink: projects
-  - text: Blog
-    permalink: blog
+  - text: Writing
+    permalink: writing
 
 # use false to turn off any social media links
 twitter: https://twitter.com/aumitleon
@@ -46,3 +46,4 @@ google-analytics: G-YH9HHMVXP9
 # jekyll plugins - no need to change
 plugins:
   - jekyll-seo-tag
+  - jekyll-redirect-from

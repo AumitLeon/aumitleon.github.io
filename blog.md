@@ -1,7 +1,9 @@
 ---
 layout: page
-title: Blog
-permalink: blog
+title: Writing
+permalink: writing
+redirect_from:
+  - /blog
 ---
 
 <div>
