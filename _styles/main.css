@@ -98,12 +98,18 @@
 
 /* --- Footer Nix store path -------------------------------------------------
    The /nix/store/... path the site was built into (see _plugins/nix_store.rb),
-   shown as a small "built by Nix" badge. Same monospace stack as .commit-hash;
-   break-all so the long path wraps on narrow screens instead of overflowing.
+   shown as a small "built by Nix" badge. Same monospace stack as .commit-hash.
    The hover text comes from the element's native `title` attribute -- no
-   cursor override, so it stays the default pointer like fzakaria.com. */
+   cursor override, so it stays the default pointer like fzakaria.com.
+
+   A store path is one long ~55-character token: wrapped it is unreadable and
+   awkward to select. Instead hold it on a single line (nowrap) and let the font
+   shrink with the viewport -- 0.7rem on a wide screen, 2.3vw once that no longer
+   fits -- so it stays on one line down to narrow phones without overflowing. */
 .store-path {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  word-break: break-all;
+  white-space: nowrap;
+  font-size: min(0.7rem, 2.3vw);
+  max-width: 100%;
 }

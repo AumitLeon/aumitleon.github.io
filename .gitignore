@@ -14,3 +14,9 @@ assets/css/style.css
 
 .bundle/
 .gems/
+
+# Nix build output symlinks (nix build -> ./result, ./result-*). They point into
+# /nix/store on the building machine, so they're machine-local and never belong
+# in git.
+result
+result-*
