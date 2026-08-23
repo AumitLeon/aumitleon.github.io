@@ -8,7 +8,10 @@ author: Aumit Leon
 permalink: stacked-diffs-with-git-and-jj
 ---
 
-Below are the slides for a talk I presented to my team around stacked diffs with git and jj. 
+Below are the slides for a talk I presented to my team around stacked diffs with git and jj.[^jj]
+
+[^jj]: [jj](https://github.com/jj-vcs/jj) is a modern alterntive to git.
+
 
 <center>
 <div style="position: relative; padding-bottom: 69.17%; height: 0; max-width: 600px; margin: 0 auto;">
@@ -17,6 +20,7 @@ Below are the slides for a talk I presented to my team around stacked diffs with
 </center>
 
 I talk about how stacked diffs are effective tools for maintaining development momentum while also increasing velocity on code reviews. Stacked diffs prefer smaller, atomic commits, which are easier to review than larger commit(s). When reviewers can focus on a smaller set of changes, they can provide the highest quality review possible. Stacked diffs also ensure that engineers aren't bottlenecked by PR review cycle time, as they can continue to work on related downstream changes while awaiting feedback. Git makes stacked diff workflows quite difficult; since many of git's actions are very branch centric, this is incogruent with stacked diffs as stacking requires reasoning about changes *across* branches. I close by providing a practical walk through of using stacked diffs in git, and jj. 
+
 
 This video is a practical walk through of stacked diffs:
 
