@@ -214,7 +214,7 @@ Nix store paths are content addressable, which includes the platform on which th
 <center>
 <figure>
   <img src="assets/img/blog_img/nix_store_derivation.png" />
-  <figcaption>The site’s footer.</figcaption>
+  <figcaption>Nix store path from my x86_64 linux machine.</figcaption>
 </figure>
 </center>
 
