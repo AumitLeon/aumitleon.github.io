@@ -20,7 +20,7 @@ This site is deployed as a simple [jekyll-github](https://docs.github.com/en/pag
 I originally used a tailwind-css template called [tailpages](https://github.com/harrywang/tailpages). The theming was minimalistic and matched my sensibilities at the time. I imagine someday I’ll get tired of it and will have an agent redesign things from scratch. Building the app locally was as simple as installing the ruby dependencies with `gem install --user-install bundler jekyll` and then serving the development server with `bundle exec jekyll serve`. 
 
 # Building the Site with Nix
-I was inspired to do this altering finding Farid Zakaria’s [personal site](https://fzakaria.com/), which also happens to be deployed via Github pages. Outside of being a beautiful site (with even more beautiful writing!), Farid recently modified his site to be completely built via nix. Color me intrigued!
+I was inspired to do this migration after finding Farid Zakaria’s [personal site](https://fzakaria.com/), which also happens to be deployed via Github pages. Outside of being a beautiful site (with even more beautiful writing!), Farid recently modified his site to be completely built via nix. Color me intrigued!
 
 ## Dependencies
 
