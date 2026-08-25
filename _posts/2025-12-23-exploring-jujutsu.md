@@ -10,7 +10,7 @@ permalink: exploring-jj
 
 [Jujutsu](https://github.com/jj-vcs/jj) (`jj`) is a new version control system (VCS) that claims to be simpler than git. For most people working with software, some level of comfort or familiarity with git is required to actually be productive. Building software is complex, and working with a distributed version control system is absolutely necessary if you’re working on a project with more than one person. What makes `jj` interesting is that it is a fresh take on a the VCS toolchain that many of us simply *tolerate*. What if things could be better? 
 
-# Transitioning to JJ
+## Transitioning to JJ
 I consider myself to be competent with git and have developed workflows that work for me over time. I generally follow the standard git flow, where I make all my WIP changes with silly commits like `WIP` or `test 1`, but then when I’m satisfied with my changes, I do a `git reset`, and then craft individual commits with meaningful commit messages for chunks of changes in various files. This works fine. 
 
 I started to explore `jj`, and was immediately interested in the fact that there is no staging area. Everything is a commit, and you can `describe` a commit (give it a message) before you make any changes (almost like saying, “this is what I intend to do”). I thought this was a pretty cool shift in approach -- stating intention *before* making changes makes more sense than having to craft intention after the fact, for the sake of a clean history.
@@ -67,10 +67,10 @@ Parent commit (@-)      : zslzyrmt 39e0e906 jujutsu-blog* | blog: jujutsu explor
 
 The really great thing about `jj` is that it can work alongside git. So you can try `jj` on an existing git repo, and see if it works with your workflow. As I was getting started, I found it useful to view the git log in conjunction with the `jj` log to better understand how things were actually working. 
 
-## Some Pitfalls
+### Some Pitfalls
 The `jj` model is really powerful, and is a lot simpler than git, but it does take some getting used to. What kept tripping me up is that when you create a new `bookmark`, `jj` doesn’t automatically move your current working copy to the tip of that new `bookmark`, sort of like you’d expect when doing a new `git checkout -b ...`. So in addition to creating the new `bookmark`, you also need to set your working copy to the tip of the new `bookmark` using `jj new <your-bookmark-name>`. As I get more familiar with the tool, I’m not sure these types of issues will even be real issues, since they can also be solved away with aliases. 
 
-# Conclusions
+## Conclusions
 `jj` is really interesting, and I can see myself fully switching over to it. I particularly like how `jj` aligns better with developer workflows and is just as powerful as git, but with less specific commands to memorize. 
 
 As with any new tool, there’s a mix of shiny-new-tool syndrome, as well as the learning curve of a new VCS that forces me to reconsider and re-learn habits embedded into my workflows over years as a developer, but I think that’s what makes being an engineer fun. There are always new tools to explore and learn about, and it’s awesome that git has some new competition. As engineers, we need to constantly stay on top of trends to make sure we’re learning and evaluating new technology as it comes out, and `jj` is the perfect excuse to do just that. 

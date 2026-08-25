@@ -18,7 +18,7 @@ LLMs, like many deep neural network architectures, are beyond the realm of expla
 
 The symbiotic relationship between human and machine is one that is still in its infancy. We use machines, but not in the most efficient way. Models like ChatGPT and its successors will increase our capabilities, but they can't replace us. The conversation will be different once (*if?*) we ever reach [Artificial General Intelligence](https://en.wikipedia.org/wiki/Artificial_general_intelligence) (AGI), but for now, these tools are best understood as allowing individuals to move up the value chain. 
 
-# Buyer beware
+## Buyer beware
 
 There are, of course, dangers associated with these models as well. Any powerful tool can be as harmful as it is useful. The ability to generate cohesive short and long form text from a well formed prompt means social engineering gets easier for malicious actors. The spread of misinformation will explode, and it will become increasingly difficult to tell the difference between what's been produced by a human, and what hasn't. Misinformation without the aid of generative models was already difficult to control, but the problem will likely become intractable as these models see increased adoption. The lines are now forever blurred, and the Turing test is no longer a sufficient measure of a machine's intelligence. 
 
