@@ -1,4 +1,6 @@
-.PHONY: serve preview build shell bundix dev help
+.PHONY: serve preview build shell bundix dev push-cachix help
+
+CACHIX_CACHE ?= aumitleon
 
 # Default target
 help:
@@ -11,6 +13,7 @@ help:
 	@echo "  make shell   - Enter the Nix dev shell"
 	@echo "  make bundix  - Regenerate gemset.nix after a Gemfile change"
 	@echo "  make dev     - Alias for serve"
+	@echo "  make push-cachix - Push the build closure (gems + site) to the Cachix cache"
 	@echo "  make help    - Show this help message"
 	@echo ""
 
@@ -36,3 +39,13 @@ bundix:
 
 # Alias for serve
 dev: serve
+
+# Push the full build closure (gems, Ruby, and the site output) to Cachix.
+# Builds first so the closure is current, then pushes every output path not
+# already in the cache. Mirrors what CI's cachix-action uploads. Requires a
+# write-authed cachix CLI (`cachix authtoken <token>`). Override the cache with
+# `make push-cachix CACHIX_CACHE=othername`.
+push-cachix: build
+	nix-store -qR --include-outputs $$(nix path-info --derivation .#site) \
+		| grep -v '\.drv$$' \
+		| cachix push $(CACHIX_CACHE)
