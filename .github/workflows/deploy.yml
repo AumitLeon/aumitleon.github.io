@@ -31,6 +31,15 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
 
+      # Pull prebuilt gems and the site closure from the public Cachix cache,
+      # and push whatever this run builds back to it. Pulling needs no auth
+      # (the cache is public); pushing uses the CACHIX_AUTH_TOKEN secret.
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: aumitleon
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+
       # A clean checkout means self.rev resolves to this commit, so the footer's
       # "Improve this page" link and Nix store path point at the exact deployed
       # revision. Most of the toolchain comes from cache.nixos.org; only the

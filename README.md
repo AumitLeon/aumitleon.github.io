@@ -69,6 +69,23 @@ All commands are thin wrappers in the [`Makefile`](./Makefile) over the flake:
 Equivalent flake invocations: `nix run .#serve`, `nix run .#preview`,
 `nix build .#site`, `nix develop`.
 
+## Binary cache (optional)
+
+CI pushes the build (gems and the site closure) to a public
+[Cachix](https://cachix.org) cache, so you can pull prebuilt artifacts instead
+of compiling the gem environment locally. To use it:
+
+```sh
+cachix use aumitleon
+```
+
+That adds `https://aumitleon.cachix.org` and its public key to your Nix config;
+subsequent `nix build .#site` / `make build` runs fetch from the cache. The
+cache is public, so no auth is needed to pull. Requires the `cachix` CLI
+(`nix profile install nixpkgs#cachix`), and on multi-user Nix you need to be a
+[trusted user](https://nix.dev/manual/nix/latest/command-ref/conf-file#conf-trusted-users)
+for the substituter to take effect.
+
 ## Making changes
 
 - **Content:** add posts under `_posts/`, edit pages (`about.md`, `index.md`, …)
