@@ -12,17 +12,17 @@ I’ve been exploring the magic and utility of reproducible builds with nix for 
 
 [^1]: The learning curve is quite steep, which probably has something to do with it.
 
-# Pre-Nix Architecture 
+## Pre-Nix Architecture 
 This site is deployed as a simple [jekyll-github](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll) pages site.[^2] This is a pretty common pattern for personal sites, given the ease of operation, built in version-control, and simple deploys (deploy on merges to `main`). 
 
 [^2]: I’ve gone through a bunch of iterations of jekyll-github pages sites since I first launched my personal site. 
 
 I originally used a tailwind-css template called [tailpages](https://github.com/harrywang/tailpages). The theming was minimalistic and matched my sensibilities at the time. I imagine someday I’ll get tired of it and will have an agent redesign things from scratch. Building the app locally was as simple as installing the ruby dependencies with `gem install --user-install bundler jekyll` and then serving the development server with `bundle exec jekyll serve`. 
 
-# Building the Site with Nix
+## Building the Site with Nix
 I was inspired to do this migration after finding Farid Zakaria’s [personal site](https://fzakaria.com/), which also happens to be deployed via Github pages. Outside of being a beautiful site (with even more beautiful writing!), Farid recently modified his site to be completely built via nix. Color me intrigued!
 
-## Dependencies
+### Dependencies
 
 In order to properly deploy my site via nix, I need to ensure all inputs and dependencies are handled deterministically by nix. My site used tailwind CSS, some static CDN fonts, some ruby dependencies, and a weird dependency on node. To get deterministic builds via nix, I need to make sure that all of these components can be represented in the nix store. 
 
@@ -44,7 +44,7 @@ The ruby dependencies are mainly centered around site building/construction, and
 
 [^4]: This migration not only helped me create reproducible builds, it also helped eliminate tech debt! 
 
-## Updating Flake and Scripts
+### Updating Flake and Scripts
 With the dependencies made legible to nix, the last step was to update my flake to include all the relevant commands and build definitions. 
 
 At the start of the flake, we update our inputs:
@@ -67,7 +67,7 @@ inputs = {
 
 Outside of the standard flake inputs (`nixpkgs` and `flake-utils`), we also include `ruby-nix` and `bundix` to help manage the ruby dependencies. 
 
-### Site Build Derivation
+#### Site Build Derivation
 The following is the derivation that helps build the site. I give it specific inputs for the build, and specify relevant build and install phases. 
 ```yaml
  # --- The built site: `nix build` --------------------------------------
@@ -139,7 +139,7 @@ The following is the derivation that helps build the site. I give it specific in
         };
 ```
 
-## Deploys
+### Deploys
 
 To deploy, I had to switch from auto-deploying on pushes to `main`, and instead, deploy via Github actions. I setup a new workflow that executed my build and then ran the deploy. These are the job definitions for my workflow: 
 
@@ -218,5 +218,5 @@ Nix store paths are content addressable, which includes the platform on which th
 </figure>
 </center>
 
-# Closing Thoughts and Agentic Development 
+## Closing Thoughts and Agentic Development 
 This migration, like many other side projects that long sat collecting dust, was made feasible by how strong LLMs and agents have gotten at understanding and generating quality code. I was able to make this entire migration in under an hour, with some prodding and guidance. Reproducible builds are more important than ever as we produce more software than ever. Ensuring that agents (locally, in sandboxes, and in production) are always working with deterministically reproducible builds makes it easy to build higher quality software that obviates entire classes of software development issues. 

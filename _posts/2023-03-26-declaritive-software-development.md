@@ -22,7 +22,7 @@ LLMs are getting more and more powerful, and the universe of possibilities aroun
 
 It would seem to follow then that GPT-4 and LLMs like it should be extremely powerful tools for people who write software. Software systems deal with a formal grammar, and there is a host of readily available training data for LLMs to train on -- this training data captures the common patterns that humans employ when writing software. In a paper titled [`On the Naturalness of Software`](https://dl.acm.org/doi/10.5555/2337223.2337322), it was posited that because code is written by humans, it exhibits statistically significant repitions in designs, patterns, and ultimately tokens. These repetitions are patterns that an LLM can learn, reproduce, and build on. Greg Brockman's live demo of GPT-4 writing a discord bot was just a small example of the power GPT-4 holds as an enabler of developer productivity. As software development becomes more declarative, we need to lean into our tools and learn how to use them in the most efficient ways. 
 
-# Building a Chrome Extension With GPT-4
+## Building a Chrome Extension With GPT-4
 What better way to test GPT-4s abilities as a developer tool, than to use it to develop something? 
 
 I had been looking to develop a simple Chrome extension powered by OpenAI APIs that could summarize text for me, but hadn't had the time to build it out on my own. I wanted to see just how powerful GPT-4 was as a tool for declarative software development. I knew what I wanted, and I knew generally how it should be built, but I didn't have the time to read the documentation to build it out -- could GPT-4 meet me in the middle and help me build what I had in mind? 
@@ -35,7 +35,7 @@ I gave GPT-4 a series of prompts, starting at the highest level, and then iterat
 
 GPT-4 quickly responded with the high level file structure that would be required and then proceeded to provide code for all of the files. It was able to correctly ascertain the simple components of a chrome extension (`manifest.json`, a `html` file, and a `javsscript` file containing the logic of the extension). Almost all of the code was semantically and functionally correct, with the exception of a few small bugs. These bugs were easy for me to catch, as I knew what to look for, but they could potentially be a source of pain for someone blindly using GPT-4 to build things without knowledge of the thing they are asking GPT-4 to build. 
 
-## Iteration
+### Iteration
 
 The particular bugs were fairly straightforward. GPT-4 had specified the `manifest.json` should be using `"manifest_version": 2`, but that's actually [deprecated](https://developer.chrome.com/docs/extensions/migrating/mv2-sunset/#:~:text=January%202024&text=Manifest%20V2%20enterprise%20policy%20expires,even%20ones%20installed%20using%20ExtensionInstallForcelist%20.). I manually flipped the 2 to a 3. 
 
@@ -95,14 +95,14 @@ document.getElementById("summarizeButton").addEventListener("click", async () =>
 
 I loaded the extension into Chrome, and it was all working as expected. I now had a functionally working Chrome extension to summarize text for me, in about 30 minutes! If you'd like to use the extension yourself, check out the [GitHub repo](https://github.com/AumitLeon/too-long-didnt-read) README (which was also, in large part, produced by GPT-4). 
 
-# Retrospective
+## Retrospective
 This is undeniably a delightful way to build software. I went into this with a vision, some knowledge of what the final product should look like at a technical level, and had GPT-4 do the majority of the heavy lifting to produce the actual code. 
 
 While GPT-4 isn't tuned for code completions in the way [codex](https://openai.com/blog/openai-codex) is, it still impressed me with its capabilities. The model adhered to my instructions, and for the most part it was able to build the iterations that I asked for. 
 
 While very effective, I did have to correct some bugs and prompt it for iterations on improving aspects of the code that didn't meet my expectations, which only stresses the importance of ***verifying the code any LLM model produces for you***. GPT-4 responds with confidence even when it hallucinates, so it's important for users to take what it produces with a grain of salt. GPT-4 and LLMs are tools that augment and accelerate human expertise, not tools to replace humans. 
 
-# What comes next?
+## What comes next?
 In computing, abstraction is the trend line in the plot of progress across decades. As time has gone on, developer tools have introduced new abstractions meant to make the production of software more efficient, more ubiquitous, and more *human friendly*. We've gone from circuits, to punch cards, to assembly, to C, to languages built on top of other languages for the express purpose of adding syntactic sugar and protecting human coders from the vagaries of manual memory management and [null pointers](https://www.youtube.com/watch?v=HSmKiws-4NU). 
 
 The trend is clear in the day's leading tools: the popularity of python is rooted in its simplicity -- it's why python sees increased adoption in courses taught at Undergraduate Computer Science departments around the world. The most popular version of python (`CPython`), is built in C. You might say python is just an abstraction over C, and in the ways that matter, you'd be right. 
