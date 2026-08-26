@@ -3,7 +3,7 @@ title: Building This Site With Nix
 layout: post
 date: 2026/08/23
 description: Producing reproducible builds of this site with Nix
-tags: nix
+tags: nix software-engineering
 author: Aumit Leon
 permalink: building-this-site-with-nix
 ---

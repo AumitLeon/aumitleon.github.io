@@ -3,7 +3,7 @@ title: Caching Nix Builds with Cachix
 layout: post
 date: 2026/08/25
 description: Caching nix builds with cachix
-tags: nix cachix
+tags: nix cachix nixos software-engineering
 author: Aumit Leon
 permalink: caching-nix-builds-with-cachix
 ---
