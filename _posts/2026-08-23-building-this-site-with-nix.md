@@ -34,12 +34,12 @@ The ruby dependencies are mainly centered around site building/construction, and
  
  
  ```yaml
- # --- Tailwind CSS -----------------------------------------------------
-        # The standalone tailwindcss CLI: a single binary that bundles the
-        # first-party plugins (including @tailwindcss/typography, which
-        # tailwind.config.js pulls in) and autoprefixer. Replaces the old
-        # node/yarn/PostCSS toolchain entirely.
-        tailwindcss = pkgs.tailwindcss;
+# --- Tailwind CSS 
+# The standalone tailwindcss CLI: a single binary that bundles the
+# first-party plugins (including @tailwindcss/typography, which
+# tailwind.config.js pulls in) and autoprefixer. Replaces the old
+# node/yarn/PostCSS toolchain entirely.
+tailwindcss = pkgs.tailwindcss;
  ```
 
 [^4]: This migration not only helped me create reproducible builds, it also helped eliminate tech debt! 
@@ -50,19 +50,19 @@ With the dependencies made legible to nix, the last step was to update my flake 
 At the start of the flake, we update our inputs:
 ```yaml
 inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    flake-utils.url = "github:numtide/flake-utils";
-
-    # Gems from Gemfile.lock, pinned via gemset.nix (below). ruby-nix builds
-    # the gem environment; the inscapist bundix fork regenerates gemset.nix and
-    # handles the platform-dependent gems in our lock (ffi, google-protobuf,
-    # sass-embedded ship per-platform).
-    ruby-nix.url = "github:inscapist/ruby-nix";
-    bundix = {
-      url = "github:inscapist/bundix/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+	nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+	flake-utils.url = "github:numtide/flake-utils";
+	
+	# Gems from Gemfile.lock, pinned via gemset.nix (below). ruby-nix builds
+	# the gem environment; the inscapist bundix fork regenerates gemset.nix and
+	# handles the platform-dependent gems in our lock (ffi, google-protobuf,
+	# sass-embedded ship per-platform).
+	ruby-nix.url = "github:inscapist/ruby-nix";
+	bundix = {
+	  url = "github:inscapist/bundix/main";
+	  inputs.nixpkgs.follows = "nixpkgs";
+	};
+};
 ```
 
 Outside of the standard flake inputs (`nixpkgs` and `flake-utils`), we also include `ruby-nix` and `bundix` to help manage the ruby dependencies. 
@@ -70,73 +70,73 @@ Outside of the standard flake inputs (`nixpkgs` and `flake-utils`), we also incl
 ### Site Build Derivation
 The following is the derivation that helps build the site. I give it specific inputs for the build, and specify relevant build and install phases. 
 ```yaml
- # --- The built site: `nix build` --------------------------------------
-        site = pkgs.stdenv.mkDerivation {
-          # Bare `name` (no version) so the store path ends in `aumitleon.dev`.
-          name = "aumitleon.dev";
+ # --- The built site: `nix build` 
+site = pkgs.stdenv.mkDerivation {
+  # Bare `name` (no version) so the store path ends in `aumitleon.dev`.
+  name = "aumitleon.dev";
 
-          # Explicit rather than `fileset.gitTracked` because that reads .git,
-          # which the flake's source copy in the store does not carry. Lists the
-          # inputs Jekyll (and the Tailwind pass) actually read.
-          src = fs.toSource {
-            root = ./.;
-            fileset = fs.unions [
-              ./_config.yml
-              ./_layouts
-              ./_includes
-              ./_plugins
-              ./_posts
-              ./_styles
-              ./assets
-              ./legacy
-              ./tailwind.config.js
-              ./404.html
-              ./CNAME
-              ./about.md
-              ./blog.md
-              ./index.md
-              ./projects.md
-              ./tag.md
-            ];
-          };
+  # Explicit rather than `fileset.gitTracked` because that reads .git,
+  # which the flake's source copy in the store does not carry. Lists the
+  # inputs Jekyll (and the Tailwind pass) actually read.
+  src = fs.toSource {
+    root = ./.;
+    fileset = fs.unions [
+      ./_config.yml
+      ./_layouts
+      ./_includes
+      ./_plugins
+      ./_posts
+      ./_styles
+      ./assets
+      ./legacy
+      ./tailwind.config.js
+      ./404.html
+      ./CNAME
+      ./about.md
+      ./blog.md
+      ./index.md
+      ./projects.md
+      ./tag.md
+    ];
+  };
 
-          nativeBuildInputs = [ rubyEnv.env tailwindcss ];
+  nativeBuildInputs = [ rubyEnv.env tailwindcss ];
 
-          env = {
-            JEKYLL_ENV = "production";
-            # The sandbox ships no locale; without this Ruby tags subprocess
-            # output as US-ASCII and the first multibyte char raises.
-            LANG = "C.UTF-8";
-            # The sandbox has no /etc/zoneinfo, so `timezone:` in _config.yml
-            # would silently resolve to UTC.
-            TZDIR = "${pkgs.tzdata}/share/zoneinfo";
-            # _plugins/commit_hash.rb reads GITHUB_SHA for the footer's
-            # "Improve this page" link. No .git in the sandbox, so the flake
-            # supplies the revision it was built from: the commit when clean,
-            # "<sha>-dirty" when the tree has uncommitted changes.
-            GITHUB_SHA = self.rev or self.dirtyRev or "dirty";
-            # _plugins/nix_store.rb surfaces this in the footer as the store path
-            # the site was built into. `placeholder "out"` is rewritten to the
-            # real $out in the build environment before jekyll runs, so the page
-            # names its own store path without the hash being circular.
-            JEKYLL_STORE_PATH = builtins.placeholder "out";
-          };
+  env = {
+    JEKYLL_ENV = "production";
+    # The sandbox ships no locale; without this Ruby tags subprocess
+    # output as US-ASCII and the first multibyte char raises.
+    LANG = "C.UTF-8";
+    # The sandbox has no /etc/zoneinfo, so `timezone:` in _config.yml
+    # would silently resolve to UTC.
+    TZDIR = "${pkgs.tzdata}/share/zoneinfo";
+    # _plugins/commit_hash.rb reads GITHUB_SHA for the footer's
+    # "Improve this page" link. No .git in the sandbox, so the flake
+    # supplies the revision it was built from: the commit when clean,
+    # "<sha>-dirty" when the tree has uncommitted changes.
+    GITHUB_SHA = self.rev or self.dirtyRev or "dirty";
+    # _plugins/nix_store.rb surfaces this in the footer as the store path
+    # the site was built into. `placeholder "out"` is rewritten to the
+    # real $out in the build environment before jekyll runs, so the page
+    # names its own store path without the hash being circular.
+    JEKYLL_STORE_PATH = builtins.placeholder "out";
+  };
 
-          buildPhase = ''
-            runHook preBuild
-            jekyll build
-            runHook postBuild
-          '';
+  buildPhase = ''
+    runHook preBuild
+    jekyll build
+    runHook postBuild
+  '';
 
-          installPhase = ''
-            runHook preInstall
-            mkdir -p $out
-            cp -r _site/. $out/
-            mkdir -p $out/assets/css
-            ${tailwindBuild "$out/assets/css/style.css"}
-            runHook postInstall
-          '';
-        };
+  installPhase = ''
+    runHook preInstall
+    mkdir -p $out
+    cp -r _site/. $out/
+    mkdir -p $out/assets/css
+    ${tailwindBuild "$out/assets/css/style.css"}
+    runHook postInstall
+  '';
+};
 ```
 
 ## Deploys
