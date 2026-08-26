@@ -110,7 +110,7 @@ I rebuilt a fresh NixOS system using my cache on my work laptop, which also happ
 #### Leveraging Cached Builds In Github Actions
 This site is built with nix[^8] and deployed via Github actions, which uses x86_64 runners. Between deploys of my site, not much changes (I don’t add/modify my gems very often) -- I am mainly just adding new blog posts. I went ahead and and configured cachix for this site’s Github action build workflow in commit [`5cef902`](https://github.com/AumitLeon/aumitleon.github.io/commit/5cef902cc52992581d760741365b093351a8efa5). 
 
-[^8]: Checkout the Nix store path in the footer of the site.
+[^8]: Checkout the nix store path in the footer of the site.
 
 The main components here were adding the the `cachix/cachix-action@17`[^9] to the workflow and adding a read/write scoped  `CACHIX_AUTH_TOKEN` as a secret to the repo to be used by the action runners. 
 
