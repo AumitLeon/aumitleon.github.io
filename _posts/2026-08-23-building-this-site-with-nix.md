@@ -33,7 +33,7 @@ The ruby dependencies are mainly centered around site building/construction, and
  This is the bulk of our dependencies, but I also had to work through a strange dependency on node that was being used with tailwind CSS. Specifically, I previously relied on an awkward yarn/node/PostCSS toolchain to manage the relevant tailwind plugins I was using (`@tailwindcss/typography` which `tailwind.config.js` pulls in, and `autoprefixer`), but the standard `tailwind-cli` is a single binary available as a nix package that packages these first-party plugins.[^4]
  
  
- ```yaml
+ ```nix
 # --- Tailwind CSS 
 # The standalone tailwindcss CLI: a single binary that bundles the
 # first-party plugins (including @tailwindcss/typography, which
@@ -48,7 +48,7 @@ tailwindcss = pkgs.tailwindcss;
 With the dependencies made legible to nix, the last step was to update my flake to include all the relevant commands and build definitions. 
 
 At the start of the flake, we update our inputs:
-```yaml
+```nix
 inputs = {
 	nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 	flake-utils.url = "github:numtide/flake-utils";
@@ -69,7 +69,7 @@ Outside of the standard flake inputs (`nixpkgs` and `flake-utils`), we also incl
 
 ### Site Build Derivation
 The following is the derivation that helps build the site. I give it specific inputs for the build, and specify relevant build and install phases. 
-```yaml
+```nix
  # --- The built site: `nix build` 
 site = pkgs.stdenv.mkDerivation {
   # Bare `name` (no version) so the store path ends in `aumitleon.dev`.

@@ -113,3 +113,136 @@
   font-size: min(0.7rem, 2.3vw);
   max-width: 100%;
 }
+
+/* --- Fenced code blocks: Rouge syntax highlighting -------------------------
+   Fenced ``` blocks are tokenized at build time by Rouge (Jekyll's default
+   highlighter), which emits <div class="highlight"><pre class="highlight">
+   <code><span class="nv|c1|s2|...">. Those token classes carry no color on
+   their own -- the theme below paints them. There is no client-side
+   highlighter; dropping highlight.js is what fixed the wrong/auto-detected
+   colors on nix and yaml blocks (Rouge keys off the language you write after
+   the fence instead of guessing).
+
+   The theme is `rougify style gruvbox.dark`, scoped to `.prose .highlight` so
+   it outranks @tailwindcss/typography's low-specificity `.prose :where(pre)`
+   rules (which otherwise force a light background on the block). Regenerate
+   with:  rougify style --scope '.prose .highlight' gruvbox.dark
+
+   The block chrome (padding / rounding / horizontal scroll) is authored here;
+   the generated theme only carries colors. */
+
+.prose pre.highlight {
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;                 /* long lines scroll, page never does */
+  line-height: 1.5;
+  background-color: #282828;        /* matches .highlight below, covers pre edges */
+}
+
+/* Inline `code` keeps its own (light, red) prose styling; only the tokenized
+   code inside a highlight block should inherit the block's palette. */
+.prose pre.highlight code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font-weight: 400;
+}
+
+/* --- rougify style gruvbox.dark (scope: .prose .highlight) ----------------- */
+.prose .highlight table td { padding: 5px; }
+.prose .highlight table pre { margin: 0; }
+.prose .highlight, .prose .highlight .w {
+  color: #fbf1c7;
+  background-color: #282828;
+}
+.prose .highlight .err {
+  color: #fb4934;
+  background-color: #282828;
+  font-weight: bold;
+}
+.prose .highlight .c, .prose .highlight .ch, .prose .highlight .cd, .prose .highlight .cm, .prose .highlight .cpf, .prose .highlight .c1, .prose .highlight .cs {
+  color: #928374;
+  font-style: italic;
+}
+.prose .highlight .cp {
+  color: #8ec07c;
+}
+.prose .highlight .nt {
+  color: #fb4934;
+}
+.prose .highlight .o, .prose .highlight .ow {
+  color: #fbf1c7;
+}
+.prose .highlight .p, .prose .highlight .pi {
+  color: #fbf1c7;
+}
+.prose .highlight .gi {
+  color: #b8bb26;
+  background-color: #282828;
+}
+.prose .highlight .gd {
+  color: #fb4934;
+  background-color: #282828;
+}
+.prose .highlight .gh {
+  color: #b8bb26;
+  font-weight: bold;
+}
+.prose .highlight .ge {
+  font-style: italic;
+}
+.prose .highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+.prose .highlight .gs {
+  font-weight: bold;
+}
+.prose .highlight .k, .prose .highlight .kn, .prose .highlight .kp, .prose .highlight .kr, .prose .highlight .kv {
+  color: #fb4934;
+}
+.prose .highlight .kc {
+  color: #d3869b;
+}
+.prose .highlight .kt {
+  color: #fabd2f;
+}
+.prose .highlight .kd {
+  color: #fe8019;
+}
+.prose .highlight .s, .prose .highlight .sb, .prose .highlight .sc, .prose .highlight .dl, .prose .highlight .sd, .prose .highlight .s2, .prose .highlight .sh, .prose .highlight .sx, .prose .highlight .s1 {
+  color: #b8bb26;
+  font-style: italic;
+}
+.prose .highlight .si {
+  color: #b8bb26;
+  font-style: italic;
+}
+.prose .highlight .sr {
+  color: #b8bb26;
+  font-style: italic;
+}
+.prose .highlight .sa {
+  color: #fb4934;
+}
+.prose .highlight .se {
+  color: #fe8019;
+}
+.prose .highlight .nn {
+  color: #8ec07c;
+}
+.prose .highlight .nc {
+  color: #8ec07c;
+}
+.prose .highlight .no {
+  color: #d3869b;
+}
+.prose .highlight .na {
+  color: #b8bb26;
+}
+.prose .highlight .m, .prose .highlight .mb, .prose .highlight .mf, .prose .highlight .mh, .prose .highlight .mi, .prose .highlight .il, .prose .highlight .mo, .prose .highlight .mx {
+  color: #d3869b;
+}
+.prose .highlight .ss {
+  color: #83a598;
+}
