@@ -12,6 +12,11 @@ node_modules/
 # CLI (dev: `make serve` / `nix run .#serve`; build: nix/site derivation).
 assets/css/style.css
 
+# Vendored front-end assets (Inter, Font Awesome, MathJax) staged into the
+# working tree by `nix run .#serve` for local dev. In the real build they come
+# straight from pinned Nix derivations (see flake.nix), never from git.
+assets/vendor/
+
 .bundle/
 .gems/
 

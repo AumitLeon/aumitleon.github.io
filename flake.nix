@@ -45,6 +45,54 @@
         # node/yarn/PostCSS toolchain entirely.
         tailwindcss = pkgs.tailwindcss;
 
+        # --- Vendored front-end assets (no runtime CDN) -----------------------
+        # Everything the rendered pages load is served from the site's own
+        # origin, so a visitor never depends on a third-party CDN and an
+        # archived copy stays byte-identical. Each source is pinned by hash, so
+        # this stays as reproducible as the rest of the build. (Google Analytics
+        # in _includes/google-analytics.html is an intentional exception -- it
+        # is an external call by nature and cannot be vendored.)
+
+        # Inter, pinned to the exact rsms/inter web release that replaces the old
+        # <link> to rsms.me. `stripRoot = false` keeps the archive's top-level
+        # layout (multiple entries: web/, *.ttf, LICENSE...), and the served CSS
+        # lives at web/inter.css referencing the flat web/*.woff2 next to it.
+        # The families it defines are "InterVariable"/"Inter" -- see the sans
+        # font stack in tailwind.config.js.
+        inter-web = pkgs.fetchzip {
+          url = "https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip";
+          hash = "sha256-5vdKKvHAeZi6igrfpbOdhZlDX2/5+UvzlnCQV6DdqoQ=";
+          stripRoot = false;
+        };
+
+        # Font Awesome 5.15.4 Free, the official web distribution (CSS +
+        # webfonts). nixpkgs' `font-awesome` ships only desktop OTFs with no CSS
+        # and at a different major version, so it can't drive web icons; we fetch
+        # the exact release the site used to load from use.fontawesome.com.
+        fontawesome = pkgs.fetchzip {
+          url = "https://github.com/FortAwesome/Font-Awesome/releases/download/5.15.4/fontawesome-free-5.15.4-web.zip";
+          hash = "sha256-nHPYOPTgSfkdyGNP7cxKsJ2AwVGcbynUZ8xQdAVORmI=";
+          stripRoot = false;
+        };
+
+        # MathJax 3, the standard web bundle straight from nixpkgs (pinned via
+        # the flake lock) -- the same major version the jsdelivr <script> used.
+        # The es5/tex-mml-chtml.js entry point lazily loads sibling chunks and
+        # fonts, so the whole es5/ tree is copied, not just that one file.
+        mathjax = pkgs.nodePackages.mathjax;
+
+        # Drop the vendored assets into ./assets/vendor next to the site tree.
+        # Shared by the build's installPhase and the dev `serve` app so the
+        # local dev server resolves the same local paths the built site uses.
+        vendorAssets = dest: ''
+          mkdir -p ${dest}/inter ${dest}/fontawesome ${dest}/mathjax
+          cp -r ${inter-web}/web/. ${dest}/inter/
+          cp -r ${fontawesome}/fontawesome-free-5.15.4-web/css \
+                ${fontawesome}/fontawesome-free-5.15.4-web/webfonts ${dest}/fontawesome/
+          cp -r ${mathjax}/lib/node_modules/mathjax/es5/. ${dest}/mathjax/
+          chmod -R u+w ${dest}
+        '';
+
         # Compile _styles/main.css -> the served stylesheet. Shared verbatim by
         # the build below and the dev workflow so both emit identical CSS.
         # Scans ./**/*.html (per tailwind.config.js `content`); run after
@@ -122,6 +170,7 @@
             cp -r _site/. $out/
             mkdir -p $out/assets/css
             ${tailwindBuild "$out/assets/css/style.css"}
+            ${vendorAssets "$out/assets/vendor"}
             runHook postInstall
           '';
         };
@@ -196,6 +245,12 @@
               serve = pkgs.writeShellScriptBin "serve" ''
                 set -e
                 export TZDIR="${pkgs.tzdata}/share/zoneinfo"
+                # Vendored fonts/scripts (Inter, Font Awesome, MathJax) so the
+                # dev server resolves the same local /assets/vendor paths the
+                # built site uses -- otherwise those requests 404 in dev.
+                echo "📦 Staging vendored assets -> assets/vendor"
+                rm -rf ./assets/vendor
+                ${vendorAssets "./assets/vendor"}
                 # Compile once up front so the stylesheet exists before Jekyll's
                 # first build -- otherwise the initial requests 404 on style.css
                 # in the gap before the watcher's first pass finishes.
