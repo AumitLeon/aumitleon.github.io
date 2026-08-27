@@ -30,7 +30,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        // Families defined by the vendored Inter CSS (assets/vendor/inter/
+        // inter.css): "InterVariable" is the variable font, "Inter" the static
+        // fallback for browsers without variable-font support.
+        sans: ['InterVariable', 'Inter', ...defaultTheme.fontFamily.sans],
       },
     },
   },

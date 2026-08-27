@@ -23,11 +23,10 @@
 
   <!-- TailwindCSS and Inter Font-->
   <link rel="stylesheet" href="{{site.baseurl}}/assets/css/style.css">
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="{{site.baseurl}}/assets/vendor/inter/inter.css">
 
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <!-- fontawesome (vendored 5.15.4, served locally -- see flake.nix) -->
+  <link rel="stylesheet" href="{{site.baseurl}}/assets/vendor/fontawesome/css/all.min.css">
 
   <!-- Syntax highlighting is done at build time by Rouge (Jekyll's default
        highlighter); the token colors live in _styles/main.css -> style.css.
@@ -41,7 +40,7 @@
       },
     };
   </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script id="MathJax-script" async src="{{site.baseurl}}/assets/vendor/mathjax/tex-mml-chtml.js"></script>
  </head>
 
 <body class="font-sans mx-auto max-w-prose">
