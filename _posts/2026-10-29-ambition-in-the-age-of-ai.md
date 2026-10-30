@@ -28,7 +28,7 @@ We’ve seen this many times throughout the year, and will likely continue seein
 [^3]: There are many Keynesian beauty contests in tech -- a focus on what the market wants in the short term as opposed to  business and technical fundamentals for long-term success makes it difficult for public companies to operate with long-horizon ambition without a profitable moat. 
 
 ## Ambition
-We need to flip this calculus in its head. Instead of doing the same with less, we should be doing *more* with *more*. We need to measure our progress not in pull requests, commits or traditional measures of developer productivity, but by the standard measures of organizational excellence: are we making accelerated progress on our roadmap? Is the quality of our products exceptional? Are we delighting our users? *Are we generating revenue?*
+We need to flip this calculus on its head. Instead of doing the same with less, we should be doing *more* with *more*. We need to measure our progress not in pull requests, commits or traditional measures of developer productivity, but by the standard measures of organizational excellence: are we making accelerated progress on our roadmap? Is the quality of our products exceptional? Are we delighting our users? *Are we generating revenue?*
 
 We need to think **big**. Every engineer should now be thinking beyond the scope of what they consider the standard level of impact for their level and role. In an organization that is truly accelerated by AI, we begin to see possibilities that were   once entirely unrealistic. 
 
